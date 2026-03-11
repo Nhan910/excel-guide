@@ -1,0 +1,85 @@
+{
+"id":"inventory_001",
+"title":"Bảng theo dõi nhập xuất hàng",
+"sheet":"Exercise_inventory",
+
+"layout":[
+{
+"type":"text",
+"cell":"A1",
+"value":"1) Nhập và định dạng dữ liệu như bảng tính sau:"
+},
+
+{
+"type":"merge",
+"range":"A2:F2",
+"value":"BẢNG THEO DÕI NHẬP XUẤT HÀNG"
+},
+
+{
+"type":"table",
+"start":"A3",
+
+"data":[
+["Mã hàng","Nhập","Xuất","Đơn giá","Tiền","Thuế"],
+["A001Y",1000,"","","",""],
+["B012N",2500,"","","",""],
+["B003Y",4582,"","","",""],
+["A011N",1400,"","","",""],
+["B054Y",1650,"","","",""]
+]
+}
+
+],
+
+"questions":[
+
+{
+"id":"q1",
+"title":"Tính cột Xuất",
+
+"hints":[
+"Lấy ký tự đầu của mã",
+"Dùng LEFT",
+"Dùng IF"
+],
+
+"solution":"=IF(LEFT(A4,1)=\"A\",B4*0.6,B4*0.7)"
+},
+
+{
+"id":"q2",
+"title":"Tính đơn giá",
+
+"hints":[
+"Lấy ký tự cuối của mã",
+"Dùng RIGHT"
+],
+
+"solution":"=IF(RIGHT(A4,1)=\"Y\",110000,135000)"
+},
+
+{
+"id":"q3",
+"title":"Tính Tiền",
+
+"hints":[
+"Tiền = Xuất * Đơn giá"
+],
+
+"solution":"=C4*D4"
+},
+
+{
+"id":"q4",
+"title":"Tính Thuế",
+
+"hints":[
+"Cần xét ký tự đầu và ký tự cuối"
+],
+
+"solution":"=IF(LEFT(A4,1)=\"A\",IF(RIGHT(A4,1)=\"Y\",E4*0.08,E4*0.11),IF(RIGHT(A4,1)=\"Y\",E4*0.17,E4*0.22))"
+}
+
+]
+}
