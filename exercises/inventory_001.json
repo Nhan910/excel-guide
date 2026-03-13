@@ -4,6 +4,7 @@
 "sheet":"Exercise_inventory",
 
 "layout":[
+
 {
 "type":"text",
 "cell":"A1",
@@ -19,7 +20,6 @@
 {
 "type":"table",
 "start":"A3",
-
 "data":[
 ["Mã hàng","Nhập","Xuất","Đơn giá","Tiền","Thuế"],
 ["A001Y",1000,"","","",""],
@@ -27,6 +27,29 @@
 ["B003Y",4582,"","","",""],
 ["A011N",1400,"","","",""],
 ["B054Y",1650,"","","",""]
+]
+},
+
+{
+"type":"block",
+"start":"A9",
+"data":[
+["Yêu cầu tính toán:"],
+["2) Tính cột Xuất như sau:"],
+["+ Nếu Mã hàng có ký tự đầu là A thì Xuất = 60% * Nhập"],
+["+ Nếu Mã hàng có ký tự đầu là B thì Xuất = 70% * Nhập"],
+[""],
+["3) Tính Đơn giá như sau:"],
+["+ Nếu Mã hàng có ký tự cuối là Y thì Đơn giá = 110000"],
+["+ Nếu Mã hàng có ký tự cuối là N thì Đơn giá = 135000"],
+[""],
+["4) Tính cột Tiền = Xuất * Đơn giá"],
+[""],
+["5) Tính Thuế như sau:"],
+["+ A và Y → Thuế = 8% * Tiền"],
+["+ A và N → Thuế = 11% * Tiền"],
+["+ B và Y → Thuế = 17% * Tiền"],
+["+ B và N → Thuế = 22% * Tiền"]
 ]
 }
 
@@ -37,49 +60,46 @@
 {
 "id":"q1",
 "title":"Tính cột Xuất",
-
+"target":"C4:C8",
 "hints":[
 "Lấy ký tự đầu của mã",
 "Dùng LEFT",
 "Dùng IF"
 ],
-
 "solution":"=IF(LEFT(A4,1)=\"A\",B4*0.6,B4*0.7)"
 },
 
 {
 "id":"q2",
-"title":"Tính đơn giá",
-
+"title":"Tính Đơn giá",
+"target":"D4:D8",
 "hints":[
 "Lấy ký tự cuối của mã",
 "Dùng RIGHT"
 ],
-
 "solution":"=IF(RIGHT(A4,1)=\"Y\",110000,135000)"
 },
 
 {
 "id":"q3",
 "title":"Tính Tiền",
-
+"target":"E4:E8",
 "hints":[
 "Tiền = Xuất * Đơn giá"
 ],
-
 "solution":"=C4*D4"
 },
 
 {
 "id":"q4",
 "title":"Tính Thuế",
-
+"target":"F4:F8",
 "hints":[
 "Cần xét ký tự đầu và ký tự cuối"
 ],
-
 "solution":"=IF(LEFT(A4,1)=\"A\",IF(RIGHT(A4,1)=\"Y\",E4*0.08,E4*0.11),IF(RIGHT(A4,1)=\"Y\",E4*0.17,E4*0.22))"
 }
 
 ]
+
 }
