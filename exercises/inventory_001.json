@@ -4,8 +4,7 @@
   "layout": [
 
     {
-      "type": "merge",
-      "range": "A2:F2",
+      "start": "A2",
       "value": "BẢNG THEO DÕI NHẬP XUẤT HÀNG"
     },
 
