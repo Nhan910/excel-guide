@@ -24,6 +24,7 @@
 
   ],
 
+  "start": "A12",
   "instruction": [
 
     "1) Nhập và định dạng dữ liệu như bảng trên",
@@ -46,25 +47,41 @@
     "- B + N → 22%"
   ],
 
-  "hint": [
-
-    "Gợi ý 1: dùng LEFT() để kiểm tra ký tự đầu của mã hàng",
-
-    "Gợi ý 2: dùng RIGHT() để kiểm tra ký tự cuối",
-
-    "Gợi ý 3: có thể kết hợp IF lồng nhau",
-
-    "Gợi ý 4: ví dụ kiểm tra ký tự đầu",
-    "=IF(LEFT(A4,1)=\"A\",B4*0.6,B4*0.7)",
-
-    "Gợi ý 5: kiểm tra ký tự cuối",
-    "=IF(RIGHT(A4,1)=\"Y\",110000,135000)",
-
-    "Gợi ý 6: tính Tiền",
-    "=C4*D4",
-
-    "Gợi ý 7: Thuế có thể dùng IF + AND",
-    "=IF(AND(LEFT(A4,1)=\"A\",RIGHT(A4,1)=\"Y\"),E4*0.08,...)"
-  ]
+  "hint":[
+  {
+    "question":2,
+    "title":"Tính cột Xuất",
+    "hints":[
+      "Dùng LEFT() để kiểm tra ký tự đầu",
+      "Nếu A → 60%",
+      "Nếu B → 70%",
+      "=IF(LEFT(A4,1)=\"A\",B4*0.6,B4*0.7)"
+    ]
+  },
+  {
+    "question":3,
+    "title":"Tính Đơn giá",
+    "hints":[
+      "Dùng RIGHT() để kiểm tra ký tự cuối",
+      "=IF(RIGHT(A4,1)=\"Y\",110000,135000)"
+    ]
+  },
+  {
+    "question":4,
+    "title":"Tính Tiền",
+    "hints":[
+      "Tiền = Xuất * Đơn giá",
+      "=C4*D4"
+    ]
+  },
+  {
+    "question":5,
+    "title":"Tính Thuế",
+    "hints":[
+      "Có thể dùng IF + AND",
+      "=IF(AND(LEFT(A4,1)=\"A\",RIGHT(A4,1)=\"Y\"),E4*0.08,...)"
+    ]
+  }
+]
 
 }
