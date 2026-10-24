@@ -1,7 +1,9 @@
 {
+  "id": "train_001",
   "sheet": "Exercise_inventory",
   "layout": [
     {
+      "type": "title",
       "start": "A2",
       "value": "BẢNG THEO DÕI NHẬP XUẤT HÀNG"
     },
@@ -18,75 +20,69 @@
       ]
     }
   ],
-  "start": "A12",
-  "instruction": [
-    "1) Nhập và định dạng dữ liệu như bảng trên",
-    "2) Tính cột Xuất",
-    "- Nếu mã hàng bắt đầu bằng A → Xuất = 60% * Nhập",
-    "- Nếu mã hàng bắt đầu bằng B → Xuất = 70% * Nhập",
-    "3) Tính Đơn giá",
-    "- Nếu mã hàng kết thúc Y → Đơn giá = 110000",
-    "- Nếu mã hàng kết thúc N → Đơn giá = 135000",
-    "4) Tính Tiền",
-    "- Tiền = Xuất * Đơn giá",
-    "5) Tính Thuế",
-    "- A + Y → 8% * Tiền",
-    "- A + N → 11% * Tiền",
-    "- B + Y → 17% * Tiền",
-    "- B + N → 22% * Tiền"
-  ],
-  "hint": [
+  "instructions": {
+    "start": "A11",
+    "items": [
+      "1) Nhập và định dạng dữ liệu như bảng trên",
+      "2) Tính cột Xuất: Nếu mã hàng bắt đầu bằng A → 60% * Nhập, bắt đầu bằng B → 70% * Nhập",
+      "3) Tính Đơn giá: Nếu mã hàng kết thúc bằng Y → 110000, kết thúc bằng N → 135000",
+      "4) Tính Tiền: Tiền = Xuất * Đơn giá",
+      "5) Tính Thuế: A+Y → 8%*Tiền | A+N → 11%*Tiền | B+Y → 17%*Tiền | B+N → 22%*Tiền"
+    ]
+  },
+  "tasks": [
     {
-      "question": 2,
+      "task_no": 2,
       "title": "Tính cột Xuất",
+      "target_column": "Xuất",
       "hints": [
-        "Dùng LEFT() để kiểm tra ký tự đầu",
-        "Nếu A → 60%",
-        "Nếu B → 70%",
-        "=IF(LEFT(A4,1)=\"A\",B4*0.6,B4*0.7)"
+        "Dùng hàm LEFT(A4, 1) để lấy ký tự đầu tiên bên trái của Mã hàng.",
+        "Kết hợp hàm IF: Nếu ký tự đầu bằng \"A\" thì lấy Nhập * 0.6, ngược lại lấy Nhập * 0.7."
       ],
-      "formula_fill": {
-        "target_column": "Xuất",
-        "cell_range": "C4:C8",
+      "solution": {
+        "base_cell": "C4",
+        "fill_range": "C4:C8",
         "formula": "=IF(LEFT(A4,1)=\"A\", B4*0.6, B4*0.7)"
       }
     },
     {
-      "question": 3,
+      "task_no": 3,
       "title": "Tính Đơn giá",
+      "target_column": "Đơn giá",
       "hints": [
-        "Dùng RIGHT() để kiểm tra ký tự cuối",
-        "=IF(RIGHT(A4,1)=\"Y\",110000,135000)"
+        "Dùng hàm RIGHT(A4, 1) để lấy ký tự cuối cùng bên phải của Mã hàng.",
+        "Nếu bằng \"Y\" thì trả về 110000, ngược lại trả về 135000."
       ],
-      "formula_fill": {
-        "target_column": "Đơn giá",
-        "cell_range": "D4:D8",
+      "solution": {
+        "base_cell": "D4",
+        "fill_range": "D4:D8",
         "formula": "=IF(RIGHT(A4,1)=\"Y\", 110000, 135000)"
       }
     },
     {
-      "question": 4,
+      "task_no": 4,
       "title": "Tính Tiền",
+      "target_column": "Tiền",
       "hints": [
-        "Tiền = Xuất * Đơn giá",
-        "=C4*D4"
+        "Nhân trực tiếp giá trị cột Xuất (C4) với cột Đơn giá (D4)."
       ],
-      "formula_fill": {
-        "target_column": "Tiền",
-        "cell_range": "E4:E8",
+      "solution": {
+        "base_cell": "E4",
+        "fill_range": "E4:E8",
         "formula": "=C4*D4"
       }
     },
     {
-      "question": 5,
+      "task_no": 5,
       "title": "Tính Thuế",
+      "target_column": "Thuế",
       "hints": [
-        "Có thể dùng lồng ghép IF kết hợp LEFT và RIGHT",
-        "=IF(LEFT(A4,1)=\"A\", IF(RIGHT(A4,1)=\"Y\", E4*0.08, E4*0.11), IF(RIGHT(A4,1)=\"Y\", E4*0.17, E4*0.22))"
+        "Sử dụng hàm IF lồng nhau kết hợp cả LEFT(A4,1) và RIGHT(A4,1).",
+        "Xét nhóm bắt đầu bằng \"A\" trước (chia 2 nhánh Y: 8%, N: 11%), sau đó xét nhóm \"B\" (chia 2 nhánh Y: 17%, N: 22%)."
       ],
-      "formula_fill": {
-        "target_column": "Thuế",
-        "cell_range": "F4:F8",
+      "solution": {
+        "base_cell": "F4",
+        "fill_range": "F4:F8",
         "formula": "=IF(LEFT(A4,1)=\"A\", IF(RIGHT(A4,1)=\"Y\", E4*0.08, E4*0.11), IF(RIGHT(A4,1)=\"Y\", E4*0.17, E4*0.22))"
       }
     }
